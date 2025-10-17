@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Everyday Frustrations — Help Shape the Next Generation of Smart Tools</title>
+  <meta name="description" content="Tell us about the everyday workflow & life-management frustrations worth fixing with automation or AI. Anonymous, 5–7 minutes." />
+  <!-- Google Font (clean & neutral) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724;       /* deep navy */
+      --card:#0b1220;     /* card background */
+      --muted:#9aa4b2;
+      --accent:#ff7a59;   /* warm coral */
+      --glass: rgba(255,255,255,0.04);
+      --max-width:920px;
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(255,122,89,0.06), transparent 8%),
+        radial-gradient(900px 420px at 90% 90%, rgba(70,120,255,0.03), transparent 6%),
+        var(--bg);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+    }
+
+    .wrap{
+      width:100%;
+      max-width:var(--max-width);
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:var(--radius);
+      box-shadow: 0 8px 30px rgba(2,6,23,0.7);
+      border: 1px solid rgba(255,255,255,0.03);
+      overflow:hidden;
+      display:grid;
+      grid-template-columns: 1fr;
+    }
+
+    header{
+      padding:28px;
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+
+    .badge{
+      width:56px;
+      height:56px;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(135deg,var(--accent), #ffb38f);
+      color:#0b1220;
+      font-weight:700;
+      font-size:20px;
+      box-shadow: 0 6px 18px rgba(255,122,89,0.14);
+      flex:0 0 56px;
+    }
+
+    .heading{
+      min-width:0;
+    }
+    h1{
+      margin:0;
+      font-size:20px;
+      line-height:1.05;
+      letter-spacing:-0.02em;
+      color: #fff;
+    }
+    p.lead{
+      margin:6px 0 0 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .content{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:18px;
+      padding:22px;
+    }
+
+    .info{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    .info .left{
+      min-width:0;
+    }
+
+    .kpi{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .pill{
+      background:var(--glass);
+      padding:8px 12px;
+      border-radius:999px;
+      color:var(--muted);
+      font-weight:600;
+      font-size:13px;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+    }
+
+    /* Responsive iframe container */
+    .iframe-wrap{
+      width:100%;
+      border-radius:10px;
+      overflow:hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+      border:1px solid rgba(255,255,255,0.03);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+    }
+
+    /* make the iframe adapt on small screens */
+    .iframe-wrap iframe{
+      width:100%;
+      height:720px; /* fallback; user-provided form has 1686px original */
+      border:0;
+      display:block;
+    }
+
+    .footnote{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      padding:16px 22px;
+      border-top:1px solid rgba(255,255,255,0.02);
+      color:var(--muted);
+      font-size:13px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+    }
+
+    .disclaimer{
+      max-width:68%;
+    }
+
+    @media (max-width:720px){
+      body{padding:18px}
+      h1{font-size:18px}
+      .badge{width:48px;height:48px;font-size:18px}
+      .iframe-wrap iframe{height:1200px}
+      .disclaimer{max-width:100%}
+    }
+
+    /* subtle entrance */
+    .wrap{transform:translateY(6px);opacity:0;animation:enter 420ms ease-out forwards;animation-delay:80ms}
+    @keyframes enter{to{transform:none;opacity:1}}
+
+    /* subtle focus ring for keyboard users */
+    .pill:focus, iframe:focus {outline: 3px solid rgba(255,122,89,0.14); outline-offset:2px;}
+  </style>
+</head>
+<body>
+  <main class="wrap" role="main" aria-labelledby="page-title">
+    <header>
+      <div class="badge" aria-hidden="true">SF</div>
+      <div class="heading">
+        <h1 id="page-title">Everyday Frustrations — Help shape the next generation of smart tools</h1>
+        <p class="lead">I'm exploring common workflow and life-management frustrations — from job hunting to running a small business — to find what's truly worth fixing with automation or AI. Honest experiences only. No sales pitch.</p>
+      </div>
+    </header>
+
+    <section class="content" aria-label="Survey invitation and embed">
+      <div class="info" aria-hidden="false">
+        <div class="left">
+          <div class="kpi">
+            <span class="pill" tabindex="0" title="Estimated completion time">⏱ 5–7 minutes</span>
+            <span class="pill" tabindex="0" title="Anonymity of responses">🔒 Anonymous responses</span>
+            <span class="pill" tabindex="0" title="Not a sales pitch">🙅 Not a sales pitch</span>
+          </div>
+          <p style="margin-top:10px;color:var(--muted);font-size:14px">
+            Your feedback helps us understand where people waste time, money, or sanity the most. If you'd rather share in short bullets, feel free to use the open answers in the form.
+          </p>
+        </div>
+
+        <div style="text-align:right">
+          <small style="color:var(--muted)">Built to be simple, YC-friendly, and focused on quality feedback.</small>
+        </div>
+      </div>
+
+      <!-- Responsive iframe container -->
+      <div class="iframe-wrap" role="region" aria-label="Embedded survey form">
+        <!-- Provided Google Forms embed (keeps the user's exact iframe src) -->
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSezSJb_pCNpRsxfDLpDo-AITuiVAGFL2GzVPTQA2dwjLE5m1Q/viewform?embedded=true"
+                title="Everyday Frustrations survey"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+          Loading…
+        </iframe>
+      </div>
+    </section>
+
+    <div class="footnote" aria-hidden="false">
+      <div class="disclaimer">
+        <strong style="display:block;color:#fff">Quick privacy note</strong>
+        <span>We do not collect identifying information in this form unless you explicitly provide it. If you prefer, share general descriptions rather than names or exact organizations.</span>
+      </div>
+      <div style="text-align:right">
+        <small style="display:block;color:var(--muted)">Thank you — your time helps us prioritize what to build.</small>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
