@@ -205,6 +205,46 @@
       line-height: 1.2;
     }
 
+    /* Form header controls */
+    .form-header-controls {
+      padding: 16px 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border-bottom: 1px solid rgba(192,132,252,0.1);
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.05);
+      color: #e6eef8;
+      border: 1px solid rgba(192,132,252,0.2);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    .back-btn:hover {
+      background: rgba(192,132,252,0.1);
+      border-color: rgba(192,132,252,0.3);
+      transform: translateX(-2px);
+    }
+
+    .back-icon {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .back-text {
+      font-size: 14px;
+    }
+
     /* Responsive iframe container */
     .iframe-wrap{
       width:100%;
@@ -284,6 +324,23 @@
         formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     }
+
+    function hideForm() {
+      const formContainer = document.getElementById('form-container');
+      const button = document.querySelector('.survey-btn');
+      
+      formContainer.style.display = 'none';
+      button.innerHTML = `
+        <span class="btn-icon">📝</span>
+        <span class="btn-text">Share Your Frustrations</span>
+        <span class="btn-subtitle">Click to load form • 5-7 minutes</span>
+      `;
+      button.style.background = 'linear-gradient(135deg, var(--accent), #e879f9)';
+      button.style.boxShadow = '0 8px 24px rgba(192,132,252,0.3)';
+      
+      // Smooth scroll back to button
+      button.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   </script>
 </head>
 <body>
@@ -325,6 +382,12 @@
 
       <!-- Hidden form container -->
       <div id="form-container" class="iframe-wrap" style="display: none;" role="region" aria-label="Embedded survey form">
+        <div class="form-header-controls">
+          <button onclick="hideForm()" class="back-btn">
+            <span class="back-icon">←</span>
+            <span class="back-text">Back to Overview</span>
+          </button>
+        </div>
         <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSezSJb_pCNpRsxfDLpDo-AITuiVAGFL2GzVPTQA2dwjLE5m1Q/viewform?embedded=true"
                 title="Everyday Frustrations survey"
                 loading="lazy"
