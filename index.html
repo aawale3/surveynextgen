@@ -208,6 +208,8 @@
     /* Startup motivation section */
     .startup-info {
       margin-top: 32px;
+      display: flex;
+      justify-content: center;
     }
 
     .startup-btn {
@@ -254,72 +256,6 @@
       line-height: 1.2;
     }
 
-    .startup-card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-      border: 1px solid rgba(192,132,252,0.1);
-      border-radius: 12px;
-      padding: 0;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-      margin-top: 24px;
-      overflow: hidden;
-    }
-
-    .startup-header-controls {
-      padding: 16px 20px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-      border-bottom: 1px solid rgba(192,132,252,0.1);
-      display: flex;
-      justify-content: flex-start;
-    }
-
-    .startup-points {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      padding: 24px;
-    }
-
-    .point {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 16px;
-      background: rgba(255,255,255,0.02);
-      border-radius: 8px;
-      border: 1px solid rgba(192,132,252,0.05);
-      transition: all 0.3s ease;
-    }
-
-    .point:hover {
-      background: rgba(192,132,252,0.05);
-      border-color: rgba(192,132,252,0.1);
-      transform: translateY(-1px);
-    }
-
-    .point-icon {
-      font-size: 20px;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .point-content {
-      flex: 1;
-    }
-
-    .point-content strong {
-      color: #fff;
-      font-size: 14px;
-      font-weight: 600;
-      display: block;
-      margin-bottom: 4px;
-    }
-
-    .point-content p {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.4;
-      margin: 0;
-    }
 
     /* Form header controls */
     .form-header-controls {
@@ -412,12 +348,6 @@
       .startup-icon{font-size:20px}
       .startup-text{font-size:15px}
       .startup-subtitle{font-size:12px}
-      .startup-card{margin-top:20px}
-      .startup-points{padding:20px}
-      .point{padding:12px;gap:10px}
-      .point-icon{font-size:18px}
-      .point-content strong{font-size:13px}
-      .point-content p{font-size:12px}
       .survey-button-container{margin-top:32px}
       .survey-btn{padding:20px 24px;min-width:240px;font-size:16px}
       .btn-text{font-size:16px}
@@ -484,38 +414,196 @@
       }
     }
 
-    function showStartupInfo() {
-      const details = document.getElementById('startup-details');
-      const button = document.querySelector('.startup-btn');
-      
-      details.style.display = 'block';
-      button.innerHTML = `
-        <span class="startup-icon">✅</span>
-        <span class="startup-text">Info Loaded</span>
-        <span class="startup-subtitle">Scroll down to read more</span>
+    function openStartupInfo() {
+      // Create a new page with the startup info content
+      const newPageContent = `
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+          <meta charset="utf-8" />
+          <meta name="viewport" content="width=device-width,initial-scale=1" />
+          <title>Why Your Input is Crucial - Survey NextGen</title>
+          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+          <style>
+            :root{
+              --bg:#0f1724;
+              --card:#0b1220;
+              --muted:#9aa4b2;
+              --accent:#c084fc;
+              --glass: rgba(255,255,255,0.04);
+            }
+            *{box-sizing:border-box}
+            body{
+              margin:0;
+              font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+              background: radial-gradient(1200px 600px at 10% 10%, rgba(192,132,252,0.08), transparent 8%),
+                          radial-gradient(900px 420px at 90% 90%, rgba(192,132,252,0.04), transparent 6%),
+                          var(--bg);
+              color:#e6eef8;
+              padding:40px 20px;
+              min-height:100vh;
+            }
+            .container{
+              max-width:800px;
+              margin:0 auto;
+              background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+              border-radius:16px;
+              box-shadow: 0 8px 30px rgba(2,6,23,0.7);
+              border: 1px solid rgba(255,255,255,0.03);
+              overflow:hidden;
+            }
+            .header{
+              padding:32px;
+              text-align:center;
+              border-bottom:1px solid rgba(192,132,252,0.1);
+            }
+            .back-btn{
+              display:inline-flex;
+              align-items:center;
+              gap:8px;
+              background:rgba(255,255,255,0.05);
+              color:#e6eef8;
+              border:1px solid rgba(192,132,252,0.2);
+              padding:12px 20px;
+              border-radius:8px;
+              font-size:14px;
+              font-weight:500;
+              cursor:pointer;
+              transition:all 0.3s ease;
+              text-decoration:none;
+              margin-bottom:20px;
+            }
+            .back-btn:hover{
+              background:rgba(192,132,252,0.1);
+              border-color:rgba(192,132,252,0.3);
+              transform:translateX(-2px);
+            }
+            h1{
+              color:#fff;
+              font-size:28px;
+              font-weight:700;
+              margin:0 0 12px 0;
+            }
+            .subtitle{
+              color:var(--muted);
+              font-size:16px;
+              margin:0;
+            }
+            .content{
+              padding:32px;
+            }
+            .points{
+              display:flex;
+              flex-direction:column;
+              gap:20px;
+            }
+            .point{
+              display:flex;
+              align-items:flex-start;
+              gap:16px;
+              padding:20px;
+              background:rgba(255,255,255,0.02);
+              border-radius:12px;
+              border:1px solid rgba(192,132,252,0.05);
+              transition:all 0.3s ease;
+            }
+            .point:hover{
+              background:rgba(192,132,252,0.05);
+              border-color:rgba(192,132,252,0.1);
+              transform:translateY(-2px);
+            }
+            .point-icon{
+              font-size:24px;
+              flex-shrink:0;
+              margin-top:2px;
+            }
+            .point-content{
+              flex:1;
+            }
+            .point-content strong{
+              color:#fff;
+              font-size:18px;
+              font-weight:600;
+              display:block;
+              margin-bottom:8px;
+            }
+            .point-content p{
+              color:var(--muted);
+              font-size:15px;
+              line-height:1.5;
+              margin:0;
+            }
+            @media (max-width:720px){
+              body{padding:20px 16px}
+              .header{padding:24px}
+              .content{padding:24px}
+              h1{font-size:24px}
+              .subtitle{font-size:14px}
+              .point{padding:16px;gap:12px}
+              .point-icon{font-size:20px}
+              .point-content strong{font-size:16px}
+              .point-content p{font-size:14px}
+            }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="header">
+              <a href="javascript:history.back()" class="back-btn">
+                <span>←</span>
+                <span>Back to Survey</span>
+              </a>
+              <h1>🎯 Why Your Input is Crucial</h1>
+              <p class="subtitle">Understanding the impact of your feedback on our startup development</p>
+            </div>
+            <div class="content">
+              <div class="points">
+                <div class="point">
+                  <span class="point-icon">📊</span>
+                  <div class="point-content">
+                    <strong>Data-Driven Decisions</strong>
+                    <p>Your responses help us validate assumptions and build features users actually need, not what we think they want. Every piece of feedback directly influences our product roadmap and feature prioritization.</p>
+                  </div>
+                </div>
+                <div class="point">
+                  <span class="point-icon">⚡</span>
+                  <div class="point-content">
+                    <strong>Rapid Development</strong>
+                    <p>As an early-stage startup, we can pivot quickly based on real feedback. Your insights directly influence our next sprint and help us avoid building features that don't solve real problems.</p>
+                  </div>
+                </div>
+                <div class="point">
+                  <span class="point-icon">🎁</span>
+                  <div class="point-content">
+                    <strong>Early Access & Influence</strong>
+                    <p>Survey participants get first access to beta versions and can influence the final product before public launch. Your feedback shapes the tools that thousands of others will use.</p>
+                  </div>
+                </div>
+                <div class="point">
+                  <span class="point-icon">🚀</span>
+                  <div class="point-content">
+                    <strong>Startup Agility</strong>
+                    <p>Unlike large corporations, we can implement changes based on user feedback within days, not months. Your input has immediate impact on our development process.</p>
+                  </div>
+                </div>
+                <div class="point">
+                  <span class="point-icon">💡</span>
+                  <div class="point-content">
+                    <strong>Real Problem Solving</strong>
+                    <p>We're building solutions for actual pain points you experience daily. Your specific examples and frustrations are more valuable than any market research or assumptions.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </body>
+        </html>
       `;
-      button.style.background = 'linear-gradient(135deg, #10b981, #34d399)';
-      button.style.boxShadow = '0 8px 24px rgba(16,185,129,0.3)';
       
-      // Smooth scroll to details
-      details.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-
-    function hideStartupInfo() {
-      const details = document.getElementById('startup-details');
-      const button = document.querySelector('.startup-btn');
-      
-      details.style.display = 'none';
-      button.innerHTML = `
-        <span class="startup-icon">🎯</span>
-        <span class="startup-text">Why Your Input is Crucial</span>
-        <span class="startup-subtitle">Click to learn more</span>
-      `;
-      button.style.background = 'linear-gradient(135deg, rgba(192,132,252,0.15), rgba(192,132,252,0.08))';
-      button.style.boxShadow = '0 6px 20px rgba(192,132,252,0.2)';
-      
-      // Smooth scroll back to button
-      button.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Open in new window/tab
+      const newWindow = window.open('', '_blank', 'width=900,height=700,scrollbars=yes,resizable=yes');
+      newWindow.document.write(newPageContent);
+      newWindow.document.close();
     }
   </script>
 </head>
@@ -549,43 +637,11 @@
 
       <!-- Startup motivation button -->
       <div class="startup-info">
-        <button onclick="showStartupInfo()" class="startup-btn">
+        <button onclick="openStartupInfo()" class="startup-btn">
           <span class="startup-icon">🎯</span>
           <span class="startup-text">Why Your Input is Crucial</span>
-          <span class="startup-subtitle">Click to learn more</span>
+          <span class="startup-subtitle"> Learn more</span>
         </button>
-        
-        <div id="startup-details" class="startup-card" style="display: none;">
-          <div class="startup-header-controls">
-            <button onclick="hideStartupInfo()" class="back-btn">
-              <span class="back-icon">←</span>
-              <span class="back-text">Back to Overview</span>
-            </button>
-          </div>
-          <div class="startup-points">
-            <div class="point">
-              <span class="point-icon">📊</span>
-              <div class="point-content">
-                <strong>Data-Driven Decisions</strong>
-                <p>Your responses help us validate assumptions and build features users actually need, not what we think they want.</p>
-              </div>
-            </div>
-            <div class="point">
-              <span class="point-icon">⚡</span>
-              <div class="point-content">
-                <strong>Rapid Development</strong>
-                <p>As an early-stage startup, we can pivot quickly based on real feedback. Your insights directly influence our next sprint.</p>
-              </div>
-            </div>
-            <div class="point">
-              <span class="point-icon">🎁</span>
-              <div class="point-content">
-                <strong>Early Access</strong>
-                <p>Survey participants get first access to beta versions and can influence the final product before public launch.</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <!-- Survey button -->
