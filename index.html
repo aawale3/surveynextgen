@@ -150,29 +150,58 @@
       box-shadow: 0 4px 12px rgba(192,132,252,0.1);
     }
 
-    /* Responsive iframe container */
-    .iframe-wrap{
-      width:100%;
-      border-radius:12px;
-      overflow:hidden;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
-      border:1px solid rgba(192,132,252,0.1);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 8px 32px rgba(0,0,0,0.3);
-      transition: all 0.3s ease;
+    /* Survey button container */
+    .survey-button-container {
       margin-top: 48px;
+      display: flex;
+      justify-content: center;
     }
 
-    .iframe-wrap:hover {
-      border-color: rgba(192,132,252,0.2);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 12px 40px rgba(0,0,0,0.4);
+    .survey-btn {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, var(--accent), #e879f9);
+      color: #0b1220;
+      text-decoration: none;
+      padding: 24px 32px;
+      border-radius: 16px;
+      font-weight: 600;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(192,132,252,0.3);
+      border: 2px solid transparent;
+      min-width: 280px;
+      text-align: center;
     }
 
-    /* make the iframe adapt on small screens */
-    .iframe-wrap iframe{
-      width:100%;
-      height:800px; /* increased height for better fit */
-      border:0;
-      display:block;
+    .survey-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(192,132,252,0.4);
+      background: linear-gradient(135deg, #e879f9, var(--accent));
+    }
+
+    .survey-btn:active {
+      transform: translateY(-2px);
+    }
+
+    .btn-icon {
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .btn-text {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .btn-subtitle {
+      font-size: 13px;
+      font-weight: 500;
+      opacity: 0.8;
+      line-height: 1.2;
     }
 
     .footnote{
@@ -196,8 +225,10 @@
       h1{font-size:18px}
       .badge{width:48px;height:48px;font-size:18px}
       .content{padding:20px;gap:20px}
-      .iframe-wrap{margin-top:32px}
-      .iframe-wrap iframe{height:1000px}
+      .survey-button-container{margin-top:32px}
+      .survey-btn{padding:20px 24px;min-width:240px;font-size:16px}
+      .btn-text{font-size:16px}
+      .btn-subtitle{font-size:12px}
       .disclaimer{max-width:100%}
     }
 
@@ -237,15 +268,16 @@
         </div>
       </div>
 
-      <!-- Google Forms within content section -->
-      <div class="iframe-wrap" role="region" aria-label="Embedded survey form">
-        <!-- Provided Google Forms embed (keeps the user's exact iframe src) -->
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSezSJb_pCNpRsxfDLpDo-AITuiVAGFL2GzVPTQA2dwjLE5m1Q/viewform?embedded=true"
-                title="Everyday Frustrations survey"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-          Loading…
-        </iframe>
+      <!-- Survey button -->
+      <div class="survey-button-container">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSezSJb_pCNpRsxfDLpDo-AITuiVAGFL2GzVPTQA2dwjLE5m1Q/viewform" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="survey-btn">
+          <span class="btn-icon">📝</span>
+          <span class="btn-text">Share Your Frustrations</span>
+          <span class="btn-subtitle">Opens in new tab • 5-7 minutes</span>
+        </a>
       </div>
     </section>
 
