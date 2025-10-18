@@ -232,6 +232,7 @@
       -webkit-tap-highlight-color:transparent;
       touch-action:manipulation;
       min-height:60px;
+      text-decoration: none;
     }
 
     .survey-btn:hover {
@@ -496,29 +497,6 @@
     }
 
     /* Responsive iframe container */
-    .iframe-wrap{
-      width:100%;
-      border-radius:12px;
-      overflow:hidden;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
-      border:1px solid rgba(192,132,252,0.1);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 8px 32px rgba(0,0,0,0.3);
-      transition: all 0.3s ease;
-      margin-top: 24px;
-    }
-
-    .iframe-wrap:hover {
-      border-color: rgba(192,132,252,0.2);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 12px 40px rgba(0,0,0,0.4);
-    }
-
-    /* make the iframe adapt on small screens */
-    .iframe-wrap iframe{
-      width:100%;
-      height:800px;
-      border:0;
-      display:block;
-    }
 
     .footnote{
       display:flex;
@@ -650,8 +628,6 @@
       .btn-subtitle{font-size:11px;margin-top:4px}
       .footnote{flex-direction:column;gap:10px;text-align:left;padding:12px 16px}
       .disclaimer{max-width:100%}
-      .iframe-wrap{margin-top:16px;border-radius:8px}
-      .iframe-wrap iframe{height:1200px;border-radius:8px}
       .form-header-controls{padding:12px 16px}
       .back-btn{padding:12px 16px;font-size:13px;border-radius:8px;min-height:44px}
       .about-section{padding:40px 16px}
@@ -682,7 +658,6 @@
       .popup-header{padding:12px}
       .popup-body{padding:12px;max-height:85vh}
       .popup-point{padding:10px;gap:6px}
-      .iframe-wrap iframe{height:1400px}
       .about-section{padding:30px 12px}
       .about-content h2{font-size:20px;margin-bottom:12px}
       .about-content > p{font-size:14px;margin-bottom:24px}
@@ -701,41 +676,6 @@
     .pill:focus, iframe:focus {outline: 3px solid rgba(192,132,252,0.14); outline-offset:2px;}
   </style>
   <script>
-    function showForm() {
-      const formContainer = document.getElementById('form-container');
-      const button = document.querySelector('.survey-btn');
-      
-      if (formContainer.style.display === 'none') {
-        formContainer.style.display = 'block';
-        button.innerHTML = `
-          <span class="btn-icon">✅</span>
-          <span class="btn-text">Form Loaded</span>
-          <span class="btn-subtitle">Scroll down to fill it out</span>
-        `;
-        button.style.background = 'linear-gradient(135deg, #10b981, #34d399)';
-        button.style.boxShadow = '0 8px 24px rgba(16,185,129,0.3)';
-        
-        // Smooth scroll to form
-        formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-
-    function hideForm() {
-      const formContainer = document.getElementById('form-container');
-      const button = document.querySelector('.survey-btn');
-      
-      formContainer.style.display = 'none';
-      button.innerHTML = `
-        <span class="btn-icon">📝</span>
-        <span class="btn-text">Share Your Frustrations</span>
-        <span class="btn-subtitle">Click to load form • 5-7 minutes</span>
-      `;
-      button.style.background = 'linear-gradient(135deg, var(--accent), #e879f9)';
-      button.style.boxShadow = '0 8px 24px rgba(192,132,252,0.3)';
-      
-      // Smooth scroll back to button
-      button.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
 
     function toggleStartupInfo() {
       const details = document.getElementById('startup-details');
@@ -877,29 +817,13 @@
         </div>
       </div>
 
-      <!-- Survey button -->
+      <!-- Survey link -->
       <div class="survey-button-container">
-        <button onclick="showForm()" class="survey-btn">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSezSJb_pCNpRsxfDLpDo-AITuiVAGFL2GzVPTQA2dwjLE5m1Q/viewform" target="_blank" class="survey-btn">
           <span class="btn-icon">📝</span>
           <span class="btn-text">Share Your Frustrations</span>
-          <span class="btn-subtitle">Click to load form • 5-7 minutes</span>
-        </button>
-      </div>
-
-      <!-- Hidden form container -->
-      <div id="form-container" class="iframe-wrap" style="display: none;" role="region" aria-label="Embedded survey form">
-        <div class="form-header-controls">
-          <button onclick="hideForm()" class="back-btn">
-            <span class="back-icon">←</span>
-            <span class="back-text">Back to Overview</span>
-          </button>
-        </div>
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSezSJb_pCNpRsxfDLpDo-AITuiVAGFL2GzVPTQA2dwjLE5m1Q/viewform?embedded=true"
-                title="Everyday Frustrations survey"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-          Loading…
-        </iframe>
+          <span class="btn-subtitle">Opens in new tab • 5-7 minutes</span>
+        </a>
       </div>
     </section>
 
