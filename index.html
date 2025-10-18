@@ -210,20 +210,56 @@
       margin-top: 32px;
     }
 
+    .startup-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(135deg, rgba(192,132,252,0.1), rgba(192,132,252,0.05));
+      border: 1px solid rgba(192,132,252,0.2);
+      border-radius: 12px;
+      padding: 16px 20px;
+      color: #e6eef8;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    .startup-btn:hover {
+      background: linear-gradient(135deg, rgba(192,132,252,0.15), rgba(192,132,252,0.08));
+      border-color: rgba(192,132,252,0.3);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(192,132,252,0.1);
+    }
+
+    .startup-icon {
+      font-size: 20px;
+    }
+
+    .startup-text {
+      flex: 1;
+      text-align: center;
+    }
+
+    .startup-arrow {
+      font-size: 14px;
+      transition: transform 0.3s ease;
+    }
+
+    .startup-btn.expanded .startup-arrow {
+      transform: rotate(180deg);
+    }
+
     .startup-card {
       background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
       border: 1px solid rgba(192,132,252,0.1);
-      border-radius: 12px;
+      border-radius: 0 0 12px 12px;
       padding: 24px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-    }
-
-    .startup-card h3 {
-      color: #fff;
-      font-size: 18px;
-      font-weight: 600;
-      margin: 0 0 20px 0;
-      text-align: center;
+      margin-top: -1px;
+      border-top: none;
     }
 
     .startup-points {
@@ -361,8 +397,9 @@
       .badge{width:48px;height:48px;font-size:18px}
       .content{padding:20px;gap:20px}
       .startup-info{margin-top:24px}
+      .startup-btn{padding:14px 16px;font-size:15px}
+      .startup-icon{font-size:18px}
       .startup-card{padding:20px}
-      .startup-card h3{font-size:16px}
       .point{padding:12px;gap:10px}
       .point-icon{font-size:18px}
       .point-content strong{font-size:13px}
@@ -417,6 +454,21 @@
       // Smooth scroll back to button
       button.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
+
+    function toggleStartupInfo() {
+      const details = document.getElementById('startup-details');
+      const button = document.querySelector('.startup-btn');
+      
+      if (details.style.display === 'none') {
+        details.style.display = 'block';
+        button.classList.add('expanded');
+        button.style.borderRadius = '12px 12px 0 0';
+      } else {
+        details.style.display = 'none';
+        button.classList.remove('expanded');
+        button.style.borderRadius = '12px';
+      }
+    }
   </script>
 </head>
 <body>
@@ -447,10 +499,15 @@
         </div>
       </div>
 
-      <!-- Startup motivation section -->
+      <!-- Startup motivation button -->
       <div class="startup-info">
-        <div class="startup-card">
-          <h3>🎯 Why Your Input is Crucial</h3>
+        <button onclick="toggleStartupInfo()" class="startup-btn">
+          <span class="startup-icon">🎯</span>
+          <span class="startup-text">Why Your Input is Crucial</span>
+          <span class="startup-arrow">▼</span>
+        </button>
+        
+        <div id="startup-details" class="startup-card" style="display: none;">
           <div class="startup-points">
             <div class="point">
               <span class="point-icon">📊</span>
