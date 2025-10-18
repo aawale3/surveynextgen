@@ -211,61 +211,72 @@
     }
 
     .startup-btn {
-      width: 100%;
-      display: flex;
+      display: inline-flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      background: linear-gradient(135deg, rgba(192,132,252,0.1), rgba(192,132,252,0.05));
-      border: 1px solid rgba(192,132,252,0.2);
-      border-radius: 12px;
-      padding: 16px 20px;
+      gap: 8px;
+      background: linear-gradient(135deg, rgba(192,132,252,0.15), rgba(192,132,252,0.08));
       color: #e6eef8;
-      font-size: 16px;
+      padding: 20px 28px;
+      border-radius: 12px;
       font-weight: 600;
-      cursor: pointer;
+      font-size: 16px;
       transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(192,132,252,0.2);
+      border: 1px solid rgba(192,132,252,0.2);
+      min-width: 280px;
+      text-align: center;
+      cursor: pointer;
       font-family: inherit;
     }
 
     .startup-btn:hover {
-      background: linear-gradient(135deg, rgba(192,132,252,0.15), rgba(192,132,252,0.08));
-      border-color: rgba(192,132,252,0.3);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(192,132,252,0.1);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(192,132,252,0.3);
+      background: linear-gradient(135deg, rgba(192,132,252,0.2), rgba(192,132,252,0.12));
     }
 
     .startup-icon {
-      font-size: 20px;
+      font-size: 22px;
+      line-height: 1;
     }
 
     .startup-text {
-      flex: 1;
-      text-align: center;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.2;
     }
 
-    .startup-arrow {
-      font-size: 14px;
-      transition: transform 0.3s ease;
-    }
-
-    .startup-btn.expanded .startup-arrow {
-      transform: rotate(180deg);
+    .startup-subtitle {
+      font-size: 13px;
+      font-weight: 500;
+      opacity: 0.8;
+      line-height: 1.2;
     }
 
     .startup-card {
       background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
       border: 1px solid rgba(192,132,252,0.1);
-      border-radius: 0 0 12px 12px;
-      padding: 24px;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-      margin-top: -1px;
-      border-top: none;
+      border-radius: 12px;
+      padding: 0;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      margin-top: 24px;
+      overflow: hidden;
+    }
+
+    .startup-header-controls {
+      padding: 16px 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border-bottom: 1px solid rgba(192,132,252,0.1);
+      display: flex;
+      justify-content: flex-start;
     }
 
     .startup-points {
       display: flex;
       flex-direction: column;
       gap: 16px;
+      padding: 24px;
     }
 
     .point {
@@ -397,9 +408,12 @@
       .badge{width:48px;height:48px;font-size:18px}
       .content{padding:20px;gap:20px}
       .startup-info{margin-top:24px}
-      .startup-btn{padding:14px 16px;font-size:15px}
-      .startup-icon{font-size:18px}
-      .startup-card{padding:20px}
+      .startup-btn{padding:18px 24px;min-width:240px;font-size:15px}
+      .startup-icon{font-size:20px}
+      .startup-text{font-size:15px}
+      .startup-subtitle{font-size:12px}
+      .startup-card{margin-top:20px}
+      .startup-points{padding:20px}
       .point{padding:12px;gap:10px}
       .point-icon{font-size:18px}
       .point-content strong{font-size:13px}
@@ -469,6 +483,40 @@
         button.style.borderRadius = '12px';
       }
     }
+
+    function showStartupInfo() {
+      const details = document.getElementById('startup-details');
+      const button = document.querySelector('.startup-btn');
+      
+      details.style.display = 'block';
+      button.innerHTML = `
+        <span class="startup-icon">✅</span>
+        <span class="startup-text">Info Loaded</span>
+        <span class="startup-subtitle">Scroll down to read more</span>
+      `;
+      button.style.background = 'linear-gradient(135deg, #10b981, #34d399)';
+      button.style.boxShadow = '0 8px 24px rgba(16,185,129,0.3)';
+      
+      // Smooth scroll to details
+      details.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function hideStartupInfo() {
+      const details = document.getElementById('startup-details');
+      const button = document.querySelector('.startup-btn');
+      
+      details.style.display = 'none';
+      button.innerHTML = `
+        <span class="startup-icon">🎯</span>
+        <span class="startup-text">Why Your Input is Crucial</span>
+        <span class="startup-subtitle">Click to learn more</span>
+      `;
+      button.style.background = 'linear-gradient(135deg, rgba(192,132,252,0.15), rgba(192,132,252,0.08))';
+      button.style.boxShadow = '0 6px 20px rgba(192,132,252,0.2)';
+      
+      // Smooth scroll back to button
+      button.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   </script>
 </head>
 <body>
@@ -501,13 +549,19 @@
 
       <!-- Startup motivation button -->
       <div class="startup-info">
-        <button onclick="toggleStartupInfo()" class="startup-btn">
+        <button onclick="showStartupInfo()" class="startup-btn">
           <span class="startup-icon">🎯</span>
           <span class="startup-text">Why Your Input is Crucial</span>
-          <span class="startup-arrow">▼</span>
+          <span class="startup-subtitle">Click to learn more</span>
         </button>
         
         <div id="startup-details" class="startup-card" style="display: none;">
+          <div class="startup-header-controls">
+            <button onclick="hideStartupInfo()" class="back-btn">
+              <span class="back-icon">←</span>
+              <span class="back-text">Back to Overview</span>
+            </button>
+          </div>
           <div class="startup-points">
             <div class="point">
               <span class="point-icon">📊</span>
