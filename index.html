@@ -106,19 +106,21 @@
     }
 
     .badge{
-      width:64px;
-      height:64px;
-      border-radius:16px;
+      width:72px;
+      height:72px;
+      border-radius:18px;
       display:flex;
       align-items:center;
       justify-content:center;
       background:linear-gradient(135deg,var(--accent), #e879f9);
       color:#0b1220;
-      font-weight:700;
-      font-size:24px;
-      box-shadow: 0 8px 24px rgba(192,132,252,0.2);
-      flex:0 0 64px;
+      font-weight:800;
+      font-size:26px;
+      box-shadow: 0 10px 30px rgba(192,132,252,0.3);
+      flex:0 0 72px;
       animation: pulse 2s ease-in-out infinite;
+      border: 2px solid rgba(255,255,255,0.1);
+      position: relative;
     }
 
     @keyframes pulse {
@@ -134,7 +136,7 @@
     }
     h1{
       margin:0 0 20px 0;
-      font-size:24px;
+      font-size:26px;
       line-height:1.2;
       letter-spacing:-0.02em;
       color: #fff;
@@ -143,6 +145,9 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
     p.lead{
       margin:0;
@@ -716,9 +721,9 @@
       .nav-link{padding:6px 12px;font-size:13px}
       .logo{font-size:15px}
       header{padding:40px 16px;min-height:160px;gap:12px}
-      .badge{width:44px;height:44px;font-size:16px;border-radius:12px}
+      .badge{width:50px;height:50px;font-size:18px;border-radius:14px}
       .heading{margin-top:20px;padding-right:8px}
-      h1{font-size:18px;margin:0 0 10px 0;line-height:1.3}
+      h1{font-size:18px;margin:0 0 10px 0;line-height:1.3;flex-direction:column;align-items:flex-start;gap:4px}
       p.lead{font-size:13px;line-height:1.4;margin:0}
       .content{padding:16px;gap:16px}
       .info{flex-direction:column;gap:10px;align-items:flex-start}
@@ -774,8 +779,8 @@
       .nav-link{padding:6px 10px;font-size:12px}
       .logo{font-size:14px}
       header{padding:30px 12px;min-height:120px;gap:10px}
-      .badge{width:40px;height:40px;font-size:14px}
-      h1{font-size:16px;margin:0 0 8px 0}
+      .badge{width:46px;height:46px;font-size:16px}
+      h1{font-size:16px;margin:0 0 8px 0;flex-direction:column;align-items:flex-start;gap:4px}
       p.lead{font-size:12px}
       .content{padding:12px;gap:12px}
       .pill{padding:6px 10px;font-size:10px;min-height:32px}
@@ -975,7 +980,7 @@
               <img src="assets/8CF7D7E0-7683-471D-A767-CBD7847C1A35_4_5005_c.jpeg" alt="Abdi Awale" class="intro-photo secondary-photo">
             </div>
             <div class="intro-content">
-              <h3>Meet Abdi Awale</h3>
+              <h3>Meet Hamzas Awale</h3>
               <p class="intro-title">Founder & Lead Engineer</p>
               <p class="intro-description">
                 I'm a Computer Science graduate student at Georgia Tech and Aerospace Engineering graduate from ASU, 
