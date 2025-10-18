@@ -256,6 +256,144 @@
       line-height: 1.2;
     }
 
+    /* Popup overlay styles */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .popup-content {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border: 1px solid rgba(192,132,252,0.2);
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      max-width: 600px;
+      width: 100%;
+      max-height: 80vh;
+      overflow: hidden;
+      animation: popupSlideIn 0.3s ease-out;
+    }
+
+    @keyframes popupSlideIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .popup-header {
+      padding: 24px;
+      border-bottom: 1px solid rgba(192,132,252,0.1);
+      position: relative;
+    }
+
+    .popup-close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(192,132,252,0.2);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e6eef8;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .popup-close-btn:hover {
+      background: rgba(192,132,252,0.2);
+      border-color: rgba(192,132,252,0.3);
+      transform: scale(1.1);
+    }
+
+    .popup-header h2 {
+      color: #fff;
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+      text-align: center;
+    }
+
+    .popup-subtitle {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+      text-align: center;
+    }
+
+    .popup-body {
+      padding: 24px;
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+
+    .popup-points {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .popup-point {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 10px;
+      border: 1px solid rgba(192,132,252,0.1);
+      transition: all 0.3s ease;
+    }
+
+    .popup-point:hover {
+      background: rgba(192,132,252,0.05);
+      border-color: rgba(192,132,252,0.2);
+      transform: translateY(-1px);
+    }
+
+    .popup-point-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .popup-point-content {
+      flex: 1;
+    }
+
+    .popup-point-content strong {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .popup-point-content p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.4;
+      margin: 0;
+    }
+
 
     /* Form header controls */
     .form-header-controls {
@@ -348,6 +486,15 @@
       .startup-icon{font-size:20px}
       .startup-text{font-size:15px}
       .startup-subtitle{font-size:12px}
+      .popup-overlay{padding:16px}
+      .popup-content{max-width:100%;max-height:90vh}
+      .popup-header{padding:20px}
+      .popup-header h2{font-size:20px}
+      .popup-body{padding:20px;max-height:70vh}
+      .popup-point{padding:14px;gap:10px}
+      .popup-point-icon{font-size:18px}
+      .popup-point-content strong{font-size:15px}
+      .popup-point-content p{font-size:13px}
       .survey-button-container{margin-top:32px}
       .survey-btn{padding:20px 24px;min-width:240px;font-size:16px}
       .btn-text{font-size:16px}
@@ -414,197 +561,32 @@
       }
     }
 
-    function openStartupInfo() {
-      // Create a new page with the startup info content
-      const newPageContent = `
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-          <meta charset="utf-8" />
-          <meta name="viewport" content="width=device-width,initial-scale=1" />
-          <title>Why Your Input is Crucial - Survey NextGen</title>
-          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-          <style>
-            :root{
-              --bg:#0f1724;
-              --card:#0b1220;
-              --muted:#9aa4b2;
-              --accent:#c084fc;
-              --glass: rgba(255,255,255,0.04);
-            }
-            *{box-sizing:border-box}
-            body{
-              margin:0;
-              font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
-              background: radial-gradient(1200px 600px at 10% 10%, rgba(192,132,252,0.08), transparent 8%),
-                          radial-gradient(900px 420px at 90% 90%, rgba(192,132,252,0.04), transparent 6%),
-                          var(--bg);
-              color:#e6eef8;
-              padding:40px 20px;
-              min-height:100vh;
-            }
-            .container{
-              max-width:800px;
-              margin:0 auto;
-              background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-              border-radius:16px;
-              box-shadow: 0 8px 30px rgba(2,6,23,0.7);
-              border: 1px solid rgba(255,255,255,0.03);
-              overflow:hidden;
-            }
-            .header{
-              padding:32px;
-              text-align:center;
-              border-bottom:1px solid rgba(192,132,252,0.1);
-            }
-            .back-btn{
-              display:inline-flex;
-              align-items:center;
-              gap:8px;
-              background:rgba(255,255,255,0.05);
-              color:#e6eef8;
-              border:1px solid rgba(192,132,252,0.2);
-              padding:12px 20px;
-              border-radius:8px;
-              font-size:14px;
-              font-weight:500;
-              cursor:pointer;
-              transition:all 0.3s ease;
-              text-decoration:none;
-              margin-bottom:20px;
-            }
-            .back-btn:hover{
-              background:rgba(192,132,252,0.1);
-              border-color:rgba(192,132,252,0.3);
-              transform:translateX(-2px);
-            }
-            h1{
-              color:#fff;
-              font-size:28px;
-              font-weight:700;
-              margin:0 0 12px 0;
-            }
-            .subtitle{
-              color:var(--muted);
-              font-size:16px;
-              margin:0;
-            }
-            .content{
-              padding:32px;
-            }
-            .points{
-              display:flex;
-              flex-direction:column;
-              gap:20px;
-            }
-            .point{
-              display:flex;
-              align-items:flex-start;
-              gap:16px;
-              padding:20px;
-              background:rgba(255,255,255,0.02);
-              border-radius:12px;
-              border:1px solid rgba(192,132,252,0.05);
-              transition:all 0.3s ease;
-            }
-            .point:hover{
-              background:rgba(192,132,252,0.05);
-              border-color:rgba(192,132,252,0.1);
-              transform:translateY(-2px);
-            }
-            .point-icon{
-              font-size:24px;
-              flex-shrink:0;
-              margin-top:2px;
-            }
-            .point-content{
-              flex:1;
-            }
-            .point-content strong{
-              color:#fff;
-              font-size:18px;
-              font-weight:600;
-              display:block;
-              margin-bottom:8px;
-            }
-            .point-content p{
-              color:var(--muted);
-              font-size:15px;
-              line-height:1.5;
-              margin:0;
-            }
-            @media (max-width:720px){
-              body{padding:20px 16px}
-              .header{padding:24px}
-              .content{padding:24px}
-              h1{font-size:24px}
-              .subtitle{font-size:14px}
-              .point{padding:16px;gap:12px}
-              .point-icon{font-size:20px}
-              .point-content strong{font-size:16px}
-              .point-content p{font-size:14px}
-            }
-          </style>
-        </head>
-        <body>
-          <div class="container">
-            <div class="header">
-              <a href="javascript:history.back()" class="back-btn">
-                <span>←</span>
-                <span>Back to Survey</span>
-              </a>
-              <h1>🎯 Why Your Input is Crucial</h1>
-              <p class="subtitle">Understanding the impact of your feedback on our startup development</p>
-            </div>
-            <div class="content">
-              <div class="points">
-                <div class="point">
-                  <span class="point-icon">📊</span>
-                  <div class="point-content">
-                    <strong>Data-Driven Decisions</strong>
-                    <p>Your responses help us validate assumptions and build features users actually need, not what we think they want. Every piece of feedback directly influences our product roadmap and feature prioritization.</p>
-                  </div>
-                </div>
-                <div class="point">
-                  <span class="point-icon">⚡</span>
-                  <div class="point-content">
-                    <strong>Rapid Development</strong>
-                    <p>As an early-stage startup, we can pivot quickly based on real feedback. Your insights directly influence our next sprint and help us avoid building features that don't solve real problems.</p>
-                  </div>
-                </div>
-                <div class="point">
-                  <span class="point-icon">🎁</span>
-                  <div class="point-content">
-                    <strong>Early Access & Influence</strong>
-                    <p>Survey participants get first access to beta versions and can influence the final product before public launch. Your feedback shapes the tools that thousands of others will use.</p>
-                  </div>
-                </div>
-                <div class="point">
-                  <span class="point-icon">🚀</span>
-                  <div class="point-content">
-                    <strong>Startup Agility</strong>
-                    <p>Unlike large corporations, we can implement changes based on user feedback within days, not months. Your input has immediate impact on our development process.</p>
-                  </div>
-                </div>
-                <div class="point">
-                  <span class="point-icon">💡</span>
-                  <div class="point-content">
-                    <strong>Real Problem Solving</strong>
-                    <p>We're building solutions for actual pain points you experience daily. Your specific examples and frustrations are more valuable than any market research or assumptions.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </body>
-        </html>
-      `;
-      
-      // Open in new window/tab
-      const newWindow = window.open('', '_blank', 'width=900,height=700,scrollbars=yes,resizable=yes');
-      newWindow.document.write(newPageContent);
-      newWindow.document.close();
+    function showStartupPopup() {
+      const popup = document.getElementById('popup-overlay');
+      popup.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
     }
+
+    function hideStartupPopup() {
+      const popup = document.getElementById('popup-overlay');
+      popup.style.display = 'none';
+      document.body.style.overflow = 'auto'; // Restore scrolling
+    }
+
+    // Close popup when clicking outside
+    document.addEventListener('click', function(event) {
+      const popup = document.getElementById('popup-overlay');
+      if (event.target === popup) {
+        hideStartupPopup();
+      }
+    });
+
+    // Close popup with Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        hideStartupPopup();
+      }
+    });
   </script>
 </head>
 <body>
@@ -637,11 +619,63 @@
 
       <!-- Startup motivation button -->
       <div class="startup-info">
-        <button onclick="openStartupInfo()" class="startup-btn">
+        <button onclick="showStartupPopup()" class="startup-btn">
           <span class="startup-icon">🎯</span>
           <span class="startup-text">Why Your Input is Crucial</span>
-          <span class="startup-subtitle"> Learn more</span>
+          <span class="startup-subtitle">Click to learn more</span>
         </button>
+      </div>
+
+      <!-- Popup overlay -->
+      <div id="popup-overlay" class="popup-overlay" style="display: none;">
+        <div class="popup-content">
+          <div class="popup-header">
+            <button onclick="hideStartupPopup()" class="popup-close-btn">
+              <span>×</span>
+            </button>
+            <h2>🎯 Why Your Input is Crucial</h2>
+            <p class="popup-subtitle">Understanding the impact of your feedback on our startup development</p>
+          </div>
+          <div class="popup-body">
+            <div class="popup-points">
+              <div class="popup-point">
+                <span class="popup-point-icon">📊</span>
+                <div class="popup-point-content">
+                  <strong>Data-Driven Decisions</strong>
+                  <p>Your responses help us validate assumptions and build features users actually need, not what we think they want. Every piece of feedback directly influences our product roadmap and feature prioritization.</p>
+                </div>
+              </div>
+              <div class="popup-point">
+                <span class="popup-point-icon">⚡</span>
+                <div class="popup-point-content">
+                  <strong>Rapid Development</strong>
+                  <p>As an early-stage startup, we can pivot quickly based on real feedback. Your insights directly influence our next sprint and help us avoid building features that don't solve real problems.</p>
+                </div>
+              </div>
+              <div class="popup-point">
+                <span class="popup-point-icon">🎁</span>
+                <div class="popup-point-content">
+                  <strong>Early Access & Influence</strong>
+                  <p>Survey participants get first access to beta versions and can influence the final product before public launch. Your feedback shapes the tools that thousands of others will use.</p>
+                </div>
+              </div>
+              <div class="popup-point">
+                <span class="popup-point-icon">🚀</span>
+                <div class="popup-point-content">
+                  <strong>Startup Agility</strong>
+                  <p>Unlike large corporations, we can implement changes based on user feedback within days, not months. Your input has immediate impact on our development process.</p>
+                </div>
+              </div>
+              <div class="popup-point">
+                <span class="popup-point-icon">💡</span>
+                <div class="popup-point-content">
+                  <strong>Real Problem Solving</strong>
+                  <p>We're building solutions for actual pain points you experience daily. Your specific examples and frustrations are more valuable than any market research or assumptions.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Survey button -->
