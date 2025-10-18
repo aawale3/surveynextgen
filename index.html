@@ -590,6 +590,124 @@
       margin: 0;
     }
 
+    /* Personal Introduction Styles */
+    .personal-intro {
+      margin: 40px 0;
+      padding: 30px;
+      background: linear-gradient(135deg, rgba(192,132,252,0.08), rgba(192,132,252,0.04));
+      border: 1px solid rgba(192,132,252,0.15);
+      border-radius: 16px;
+    }
+
+    .intro-header {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+      margin-bottom: 30px;
+    }
+
+    .intro-photos {
+      display: flex;
+      gap: 15px;
+      flex-shrink: 0;
+    }
+
+    .intro-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(192,132,252,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .intro-photo:hover {
+      transform: scale(1.05);
+      border-color: var(--accent);
+    }
+
+    .main-photo {
+      z-index: 2;
+    }
+
+    .secondary-photo {
+      margin-left: -20px;
+      opacity: 0.8;
+      z-index: 1;
+    }
+
+    .intro-content {
+      flex: 1;
+    }
+
+    .intro-content h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 8px 0;
+      background: linear-gradient(135deg, #fff, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .intro-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 0 0 12px 0;
+    }
+
+    .intro-description {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .credentials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .credential-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(192,132,252,0.1);
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .credential-item:hover {
+      background: rgba(192,132,252,0.08);
+      border-color: rgba(192,132,252,0.2);
+      transform: translateY(-2px);
+    }
+
+    .credential-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .credential-content strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .credential-content p {
+      font-size: 13px;
+      line-height: 1.4;
+      color: var(--muted);
+      margin: 0;
+    }
+
     @media (max-width:720px){
       body{padding:12px;padding-top:100px}
       .wrap{margin:0;border-radius:8px}
@@ -638,6 +756,15 @@
       .about-icon{font-size:20px}
       .about-point-content strong{font-size:15px}
       .about-point-content p{font-size:13px}
+      .personal-intro{margin:24px 0;padding:20px}
+      .intro-header{flex-direction:column;gap:20px;text-align:center}
+      .intro-photos{justify-content:center}
+      .intro-photo{width:70px;height:70px}
+      .intro-content h3{font-size:20px}
+      .intro-description{font-size:14px}
+      .credentials{grid-template-columns:1fr;gap:12px}
+      .credential-item{padding:12px;gap:10px}
+      .credential-icon{font-size:18px}
     }
     
     @media (max-width:480px){
@@ -666,6 +793,14 @@
       .about-icon{font-size:18px}
       .about-point-content strong{font-size:14px}
       .about-point-content p{font-size:12px}
+      .personal-intro{margin:20px 0;padding:16px}
+      .intro-header{gap:16px}
+      .intro-photo{width:60px;height:60px}
+      .intro-content h3{font-size:18px}
+      .intro-description{font-size:13px}
+      .credentials{gap:10px}
+      .credential-item{padding:10px;gap:8px}
+      .credential-icon{font-size:16px}
     }
 
     /* subtle entrance */
@@ -831,6 +966,55 @@
       <div class="about-content">
         <h2>About SurveyNextGen</h2>
         <p>We're a team of tech entrepreneurs passionate about solving real-world problems through AI and automation. Our mission is to build tools that actually make a difference in people's daily lives.</p>
+        
+        <!-- Personal Introduction -->
+        <div class="personal-intro">
+          <div class="intro-header">
+            <div class="intro-photos">
+              <img src="assets/544B7647-D931-467F-B441-7E8BD2179CEC_4_5005_c.jpeg" alt="Abdi Awale" class="intro-photo main-photo">
+              <img src="assets/8CF7D7E0-7683-471D-A767-CBD7847C1A35_4_5005_c.jpeg" alt="Abdi Awale" class="intro-photo secondary-photo">
+            </div>
+            <div class="intro-content">
+              <h3>Meet Abdi Awale</h3>
+              <p class="intro-title">Founder & Lead Engineer</p>
+              <p class="intro-description">
+                I'm a Computer Science graduate student at Georgia Tech and Aerospace Engineering graduate from ASU, 
+                currently working as a Product Development Engineer at Intel Corporation. With experience in AI, 
+                automation, and test program development, I'm building the next generation of smart tools to solve 
+                everyday workflow frustrations.
+              </p>
+            </div>
+          </div>
+          
+          <div class="credentials">
+            <div class="credential-item">
+              <span class="credential-icon">🎓</span>
+              <div class="credential-content">
+                <strong>Education</strong>
+                <p>M.S.E. Computer Science, Georgia Tech (2022-2026)<br>
+                M.S.E. Aerospace Engineering, ASU (2018-2023)</p>
+              </div>
+            </div>
+            
+            <div class="credential-item">
+              <span class="credential-icon">💼</span>
+              <div class="credential-content">
+                <strong>Professional Experience</strong>
+                <p>Product Development Engineer at Intel Corporation<br>
+                Former Intern at Honeywell Aerospace</p>
+              </div>
+            </div>
+            
+            <div class="credential-item">
+              <span class="credential-icon">⚡</span>
+              <div class="credential-content">
+                <strong>Technical Expertise</strong>
+                <p>Python, C++, AI/ML, Test Automation<br>
+                High Bandwidth Memory, DDR, PCIe Systems</p>
+              </div>
+            </div>
+          </div>
+        </div>
         
         <div class="about-points">
           <div class="about-point">
