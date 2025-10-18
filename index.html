@@ -205,6 +205,75 @@
       line-height: 1.2;
     }
 
+    /* Startup motivation section */
+    .startup-info {
+      margin-top: 32px;
+    }
+
+    .startup-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid rgba(192,132,252,0.1);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+
+    .startup-card h3 {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0 0 20px 0;
+      text-align: center;
+    }
+
+    .startup-points {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .point {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px;
+      background: rgba(255,255,255,0.02);
+      border-radius: 8px;
+      border: 1px solid rgba(192,132,252,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .point:hover {
+      background: rgba(192,132,252,0.05);
+      border-color: rgba(192,132,252,0.1);
+      transform: translateY(-1px);
+    }
+
+    .point-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .point-content {
+      flex: 1;
+    }
+
+    .point-content strong {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .point-content p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+      margin: 0;
+    }
+
     /* Form header controls */
     .form-header-controls {
       padding: 16px 20px;
@@ -291,6 +360,13 @@
       h1{font-size:18px}
       .badge{width:48px;height:48px;font-size:18px}
       .content{padding:20px;gap:20px}
+      .startup-info{margin-top:24px}
+      .startup-card{padding:20px}
+      .startup-card h3{font-size:16px}
+      .point{padding:12px;gap:10px}
+      .point-icon{font-size:18px}
+      .point-content strong{font-size:13px}
+      .point-content p{font-size:12px}
       .survey-button-container{margin-top:32px}
       .survey-btn{padding:20px 24px;min-width:240px;font-size:16px}
       .btn-text{font-size:16px}
@@ -348,8 +424,8 @@
     <header>
       <div class="badge" aria-hidden="true">SF</div>
       <div class="heading">
-        <h1 id="page-title">🚀 Help Shape the Next Generation of Smart Tools</h1>
-        <p class="lead">What if we could eliminate the daily frustrations that waste your time, money, and sanity? I'm building tools to solve real problems — from job hunting nightmares to small business chaos. Your honest experiences will directly influence what gets built next.</p>
+        <h1 id="page-title">🚀 Help Build the Next Generation of Tech Solutions</h1>
+        <p class="lead">I'm a tech entrepreneur building AI-powered tools to solve real-world problems. Your insights will directly shape our product roadmap and help us prioritize which solutions to build first. From job hunting frustrations to small business inefficiencies — your experiences matter more than market research.</p>
       </div>
     </header>
 
@@ -362,12 +438,42 @@
             <span class="pill" tabindex="0" title="Not a sales pitch">🙅 Not a sales pitch</span>
           </div>
           <p style="margin-top:12px;color:#e6eef8;font-size:15px;font-weight:500">
-            💡 <strong>Your voice matters.</strong> Every response helps prioritize which problems are worth solving first. Share as much or as little as you want — bullet points work perfectly.
+            💡 <strong>Your feedback drives our development.</strong> As a startup founder, I'm prioritizing features based on real user pain points, not assumptions. Every response helps us build tools that actually solve problems people face daily. Share specific examples — they're gold for product development.
           </p>
         </div>
 
         <div style="text-align:right">
-          <small style="color:var(--accent);font-weight:600">✨ Built for builders, by builders</small>
+          <small style="color:var(--accent);font-weight:600">🚀 Early-stage startup • User-driven development</small>
+        </div>
+      </div>
+
+      <!-- Startup motivation section -->
+      <div class="startup-info">
+        <div class="startup-card">
+          <h3>🎯 Why Your Input is Crucial</h3>
+          <div class="startup-points">
+            <div class="point">
+              <span class="point-icon">📊</span>
+              <div class="point-content">
+                <strong>Data-Driven Decisions</strong>
+                <p>Your responses help us validate assumptions and build features users actually need, not what we think they want.</p>
+              </div>
+            </div>
+            <div class="point">
+              <span class="point-icon">⚡</span>
+              <div class="point-content">
+                <strong>Rapid Development</strong>
+                <p>As an early-stage startup, we can pivot quickly based on real feedback. Your insights directly influence our next sprint.</p>
+              </div>
+            </div>
+            <div class="point">
+              <span class="point-icon">🎁</span>
+              <div class="point-content">
+                <strong>Early Access</strong>
+                <p>Survey participants get first access to beta versions and can influence the final product before public launch.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
