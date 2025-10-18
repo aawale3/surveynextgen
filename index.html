@@ -46,12 +46,63 @@
       grid-template-columns: 1fr;
     }
 
+    /* Top navigation */
+    .top-nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(180deg, rgba(15,23,36,0.9), rgba(15,23,36,0.7));
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(192,132,252,0.1);
+      z-index: 100;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: #e6eef8;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    .nav-link:hover {
+      background: rgba(192,132,252,0.1);
+      color: var(--accent);
+    }
+
+    .nav-link.active {
+      background: rgba(192,132,252,0.15);
+      color: var(--accent);
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 16px;
+      color: #fff;
+    }
+
     header{
       padding:80px 28px;
       display:flex;
       gap:20px;
       align-items:flex-start;
       min-height:200px;
+      margin-top: 60px;
     }
 
     .badge{
@@ -485,10 +536,90 @@
       max-width:68%;
     }
 
+    /* About section */
+    .about-section {
+      padding: 60px 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-top: 1px solid rgba(192,132,252,0.1);
+    }
+
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about-content h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 0 20px 0;
+      text-align: center;
+      background: linear-gradient(135deg, #fff, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .about-content > p {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--muted);
+      text-align: center;
+      margin: 0 0 40px 0;
+    }
+
+    .about-points {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .about-point {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 24px;
+      background: linear-gradient(135deg, rgba(192,132,252,0.08), rgba(192,132,252,0.04));
+      border: 1px solid rgba(192,132,252,0.15);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .about-point:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, rgba(192,132,252,0.12), rgba(192,132,252,0.06));
+      border-color: rgba(192,132,252,0.25);
+    }
+
+    .about-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .about-point-content strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .about-point-content p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--muted);
+      margin: 0;
+    }
+
     @media (max-width:720px){
       body{padding:12px}
       .wrap{margin:0;border-radius:8px}
-      header{padding:40px 16px;min-height:160px;gap:12px}
+      .top-nav{padding:16px 20px}
+      .nav-links{gap:16px}
+      .nav-link{padding:6px 12px;font-size:13px}
+      .logo{font-size:15px}
+      header{padding:40px 16px;min-height:160px;gap:12px;margin-top:50px}
       .badge{width:44px;height:44px;font-size:16px;border-radius:12px}
       .heading{margin-top:20px;padding-right:8px}
       h1{font-size:18px;margin:0 0 10px 0;line-height:1.3}
@@ -523,11 +654,23 @@
       .iframe-wrap iframe{height:1200px;border-radius:8px}
       .form-header-controls{padding:12px 16px}
       .back-btn{padding:12px 16px;font-size:13px;border-radius:8px;min-height:44px}
+      .about-section{padding:40px 16px}
+      .about-content h2{font-size:24px;margin-bottom:16px}
+      .about-content > p{font-size:15px;margin-bottom:32px}
+      .about-points{grid-template-columns:1fr;gap:16px;margin-top:32px}
+      .about-point{padding:20px;gap:12px}
+      .about-icon{font-size:20px}
+      .about-point-content strong{font-size:15px}
+      .about-point-content p{font-size:13px}
     }
     
     @media (max-width:480px){
       body{padding:8px}
-      header{padding:30px 12px;min-height:120px;gap:10px}
+      .top-nav{padding:12px 16px}
+      .nav-links{gap:12px}
+      .nav-link{padding:6px 10px;font-size:12px}
+      .logo{font-size:14px}
+      header{padding:30px 12px;min-height:120px;gap:10px;margin-top:40px}
       .badge{width:40px;height:40px;font-size:14px}
       h1{font-size:16px;margin:0 0 8px 0}
       p.lead{font-size:12px}
@@ -540,6 +683,14 @@
       .popup-body{padding:12px;max-height:85vh}
       .popup-point{padding:10px;gap:6px}
       .iframe-wrap iframe{height:1400px}
+      .about-section{padding:30px 12px}
+      .about-content h2{font-size:20px;margin-bottom:12px}
+      .about-content > p{font-size:14px;margin-bottom:24px}
+      .about-points{gap:12px;margin-top:24px}
+      .about-point{padding:16px;gap:10px}
+      .about-icon{font-size:18px}
+      .about-point-content strong{font-size:14px}
+      .about-point-content p{font-size:12px}
     }
 
     /* subtle entrance */
@@ -630,6 +781,14 @@
   </script>
 </head>
 <body>
+  <nav class="top-nav">
+    <div class="logo">SurveyNextGen</div>
+    <div class="nav-links">
+      <a href="#" class="nav-link active">Home</a>
+      <a href="#about" class="nav-link">About</a>
+    </div>
+  </nav>
+  
   <main class="wrap" role="main" aria-labelledby="page-title">
     <header>
       <div class="badge" aria-hidden="true">SF</div>
@@ -741,6 +900,39 @@
                 referrerpolicy="no-referrer-when-downgrade">
           Loading…
         </iframe>
+      </div>
+    </section>
+
+    <section id="about" class="about-section">
+      <div class="about-content">
+        <h2>About SurveyNextGen</h2>
+        <p>We're a team of tech entrepreneurs passionate about solving real-world problems through AI and automation. Our mission is to build tools that actually make a difference in people's daily lives.</p>
+        
+        <div class="about-points">
+          <div class="about-point">
+            <span class="about-icon">🎯</span>
+            <div class="about-point-content">
+              <strong>User-Driven Development</strong>
+              <p>Every feature we build is based on real user feedback and pain points.</p>
+            </div>
+          </div>
+          
+          <div class="about-point">
+            <span class="about-icon">🤖</span>
+            <div class="about-point-content">
+              <strong>AI-Powered Solutions</strong>
+              <p>We leverage cutting-edge AI to automate tedious tasks and streamline workflows.</p>
+            </div>
+          </div>
+          
+          <div class="about-point">
+            <span class="about-icon">🚀</span>
+            <div class="about-point-content">
+              <strong>Startup Focus</strong>
+              <p>We understand the unique challenges faced by entrepreneurs and small businesses.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
