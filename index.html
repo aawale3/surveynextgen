@@ -164,7 +164,6 @@
       gap: 8px;
       background: linear-gradient(135deg, var(--accent), #e879f9);
       color: #0b1220;
-      text-decoration: none;
       padding: 24px 32px;
       border-radius: 16px;
       font-weight: 600;
@@ -174,6 +173,8 @@
       border: 2px solid transparent;
       min-width: 280px;
       text-align: center;
+      cursor: pointer;
+      font-family: inherit;
     }
 
     .survey-btn:hover {
@@ -202,6 +203,31 @@
       font-weight: 500;
       opacity: 0.8;
       line-height: 1.2;
+    }
+
+    /* Responsive iframe container */
+    .iframe-wrap{
+      width:100%;
+      border-radius:12px;
+      overflow:hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+      border:1px solid rgba(192,132,252,0.1);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 8px 32px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+      margin-top: 24px;
+    }
+
+    .iframe-wrap:hover {
+      border-color: rgba(192,132,252,0.2);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 12px 40px rgba(0,0,0,0.4);
+    }
+
+    /* make the iframe adapt on small screens */
+    .iframe-wrap iframe{
+      width:100%;
+      height:800px;
+      border:0;
+      display:block;
     }
 
     .footnote{
@@ -239,6 +265,26 @@
     /* subtle focus ring for keyboard users */
     .pill:focus, iframe:focus {outline: 3px solid rgba(192,132,252,0.14); outline-offset:2px;}
   </style>
+  <script>
+    function showForm() {
+      const formContainer = document.getElementById('form-container');
+      const button = document.querySelector('.survey-btn');
+      
+      if (formContainer.style.display === 'none') {
+        formContainer.style.display = 'block';
+        button.innerHTML = `
+          <span class="btn-icon">✅</span>
+          <span class="btn-text">Form Loaded</span>
+          <span class="btn-subtitle">Scroll down to fill it out</span>
+        `;
+        button.style.background = 'linear-gradient(135deg, #10b981, #34d399)';
+        button.style.boxShadow = '0 8px 24px rgba(16,185,129,0.3)';
+        
+        // Smooth scroll to form
+        formContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  </script>
 </head>
 <body>
   <main class="wrap" role="main" aria-labelledby="page-title">
@@ -270,14 +316,21 @@
 
       <!-- Survey button -->
       <div class="survey-button-container">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSezSJb_pCNpRsxfDLpDo-AITuiVAGFL2GzVPTQA2dwjLE5m1Q/viewform" 
-           target="_blank" 
-           rel="noopener noreferrer"
-           class="survey-btn">
+        <button onclick="showForm()" class="survey-btn">
           <span class="btn-icon">📝</span>
           <span class="btn-text">Share Your Frustrations</span>
-          <span class="btn-subtitle">Opens in new tab • 5-7 minutes</span>
-        </a>
+          <span class="btn-subtitle">Click to load form • 5-7 minutes</span>
+        </button>
+      </div>
+
+      <!-- Hidden form container -->
+      <div id="form-container" class="iframe-wrap" style="display: none;" role="region" aria-label="Embedded survey form">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSezSJb_pCNpRsxfDLpDo-AITuiVAGFL2GzVPTQA2dwjLE5m1Q/viewform?embedded=true"
+                title="Everyday Frustrations survey"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+          Loading…
+        </iframe>
       </div>
     </section>
 
