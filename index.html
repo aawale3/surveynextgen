@@ -55,18 +55,24 @@
     }
 
     .badge{
-      width:56px;
-      height:56px;
-      border-radius:12px;
+      width:64px;
+      height:64px;
+      border-radius:16px;
       display:flex;
       align-items:center;
       justify-content:center;
       background:linear-gradient(135deg,var(--accent), #a5f3fc);
       color:#0b1220;
       font-weight:700;
-      font-size:20px;
-      box-shadow: 0 6px 18px rgba(125,211,252,0.14);
-      flex:0 0 56px;
+      font-size:24px;
+      box-shadow: 0 8px 24px rgba(125,211,252,0.2);
+      flex:0 0 64px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
 
     .heading{
@@ -76,17 +82,23 @@
       padding-right:16px;
     }
     h1{
-      margin:0 0 12px 0;
-      font-size:20px;
+      margin:0 0 16px 0;
+      font-size:24px;
       line-height:1.2;
       letter-spacing:-0.02em;
       color: #fff;
+      font-weight:700;
+      background: linear-gradient(135deg, #fff, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
     p.lead{
       margin:0;
       color:var(--muted);
-      font-size:13px;
-      line-height:1.5;
+      font-size:15px;
+      line-height:1.6;
+      font-weight:400;
     }
 
     .content{
@@ -117,25 +129,41 @@
     }
 
     .pill{
-      background:var(--glass);
-      padding:8px 12px;
+      background:linear-gradient(135deg, var(--glass), rgba(125,211,252,0.08));
+      padding:10px 16px;
       border-radius:999px;
-      color:var(--muted);
+      color:#e6eef8;
       font-weight:600;
-      font-size:13px;
+      font-size:14px;
       display:inline-flex;
       gap:8px;
       align-items:center;
+      border: 1px solid rgba(125,211,252,0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .pill:hover {
+      background: linear-gradient(135deg, rgba(125,211,252,0.15), rgba(125,211,252,0.08));
+      border-color: rgba(125,211,252,0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(125,211,252,0.1);
     }
 
     /* Responsive iframe container */
     .iframe-wrap{
       width:100%;
-      border-radius:10px;
+      border-radius:12px;
       overflow:hidden;
-      background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
-      border:1px solid rgba(255,255,255,0.03);
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+      border:1px solid rgba(125,211,252,0.1);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 8px 32px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .iframe-wrap:hover {
+      border-color: rgba(125,211,252,0.2);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 12px 40px rgba(0,0,0,0.4);
     }
 
     /* make the iframe adapt on small screens */
@@ -183,8 +211,8 @@
     <header>
       <div class="badge" aria-hidden="true">SF</div>
       <div class="heading">
-        <h1 id="page-title">Everyday Frustrations — Help shape the next generation of smart tools</h1>
-        <p class="lead">I'm exploring common workflow and life-management frustrations — from job hunting to running a small business — to find what's truly worth fixing with automation or AI. Honest experiences only. No sales pitch.</p>
+        <h1 id="page-title">🚀 Help Shape the Next Generation of Smart Tools</h1>
+        <p class="lead">What if we could eliminate the daily frustrations that waste your time, money, and sanity? I'm building tools to solve real problems — from job hunting nightmares to small business chaos. Your honest experiences will directly influence what gets built next.</p>
       </div>
     </header>
 
@@ -196,13 +224,13 @@
             <span class="pill" tabindex="0" title="Anonymity of responses">🔒 Anonymous responses</span>
             <span class="pill" tabindex="0" title="Not a sales pitch">🙅 Not a sales pitch</span>
           </div>
-          <p style="margin-top:10px;color:var(--muted);font-size:14px">
-            Your feedback helps us understand where people waste time, money, or sanity the most. If you'd rather share in short bullets, feel free to use the open answers in the form.
+          <p style="margin-top:12px;color:#e6eef8;font-size:15px;font-weight:500">
+            💡 <strong>Your voice matters.</strong> Every response helps prioritize which problems are worth solving first. Share as much or as little as you want — bullet points work perfectly.
           </p>
         </div>
 
         <div style="text-align:right">
-          <small style="color:var(--muted)">Built to be simple, YC-friendly, and focused on quality feedback.</small>
+          <small style="color:var(--accent);font-weight:600">✨ Built for builders, by builders</small>
         </div>
       </div>
 
@@ -220,11 +248,11 @@
 
     <div class="footnote" aria-hidden="false">
       <div class="disclaimer">
-        <strong style="display:block;color:#fff">Quick privacy note</strong>
-        <span>We do not collect identifying information in this form unless you explicitly provide it. If you prefer, share general descriptions rather than names or exact organizations.</span>
+        <strong style="display:block;color:#fff;margin-bottom:8px">🔒 Privacy Promise</strong>
+        <span>We don't collect identifying info unless you share it. Feel free to use general descriptions instead of specific names or companies.</span>
       </div>
       <div style="text-align:right">
-        <small style="display:block;color:var(--muted)">Thank you — your time helps us prioritize what to build.</small>
+        <small style="display:block;color:var(--accent);font-weight:600">🙏 Thank you — your insights shape the future</small>
       </div>
     </div>
   </main>
