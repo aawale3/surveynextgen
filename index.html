@@ -150,8 +150,8 @@
       box-shadow: 0 4px 12px rgba(192,132,252,0.1);
     }
 
-    /* Custom form container */
-    .form-container{
+    /* Responsive iframe container */
+    .iframe-wrap{
       width:100%;
       border-radius:12px;
       overflow:hidden;
@@ -159,118 +159,19 @@
       border:1px solid rgba(192,132,252,0.1);
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 8px 32px rgba(0,0,0,0.3);
       transition: all 0.3s ease;
-      padding:24px;
     }
 
-    .form-container:hover {
+    .iframe-wrap:hover {
       border-color: rgba(192,132,252,0.2);
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 12px 40px rgba(0,0,0,0.4);
     }
 
-    .form-header {
-      text-align: center;
-      margin-bottom: 24px;
-    }
-
-    .form-header h3 {
-      color: #fff;
-      font-size: 20px;
-      font-weight: 600;
-      margin: 0 0 8px 0;
-    }
-
-    .form-header p {
-      color: var(--muted);
-      font-size: 14px;
-      margin: 0;
-    }
-
-    .survey-form {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .form-group label {
-      color: #e6eef8;
-      font-weight: 500;
-      font-size: 14px;
-    }
-
-    .form-group select,
-    .form-group textarea {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(192,132,252,0.2);
-      border-radius: 8px;
-      padding: 12px;
-      color: #e6eef8;
-      font-size: 14px;
-      font-family: inherit;
-      transition: all 0.3s ease;
-    }
-
-    .form-group select:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(192,132,252,0.1);
-    }
-
-    .form-group textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    .form-group textarea::placeholder {
-      color: var(--muted);
-    }
-
-    .checkbox-group {
-      flex-direction: row;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .checkbox-group label {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      font-size: 13px;
-    }
-
-    .checkbox-group input[type="checkbox"] {
-      width: 16px;
-      height: 16px;
-      accent-color: var(--accent);
-    }
-
-    .submit-btn {
-      background: linear-gradient(135deg, var(--accent), #e879f9);
-      color: #0b1220;
-      border: none;
-      border-radius: 8px;
-      padding: 14px 24px;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      margin-top: 8px;
-    }
-
-    .submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(192,132,252,0.3);
-    }
-
-    .submit-btn:active {
-      transform: translateY(0);
+    /* make the iframe adapt on small screens */
+    .iframe-wrap iframe{
+      width:100%;
+      height:720px; /* fallback; user-provided form has 1686px original */
+      border:0;
+      display:block;
     }
 
     .footnote{
@@ -333,64 +234,15 @@
         </div>
       </div>
 
-      <!-- Custom survey form -->
-      <div class="form-container" role="region" aria-label="Survey form">
-        <div class="form-header">
-          <h3>Share Your Frustrations</h3>
-          <p>Help us understand what's worth building next</p>
-        </div>
-        
-        <form class="survey-form" action="#" method="post">
-          <div class="form-group">
-            <label for="frustration-type">What type of frustration affects you most?</label>
-            <select id="frustration-type" name="frustration-type" required>
-              <option value="">Select an option</option>
-              <option value="job-hunting">Job hunting & applications</option>
-              <option value="small-business">Small business operations</option>
-              <option value="personal-productivity">Personal productivity</option>
-              <option value="communication">Communication & collaboration</option>
-              <option value="data-management">Data & file management</option>
-              <option value="financial">Financial management</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="description">Describe your biggest frustration (be specific)</label>
-            <textarea id="description" name="description" rows="4" placeholder="e.g., 'I spend 3 hours every week manually updating spreadsheets because our tools don't talk to each other...'" required></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="time-wasted">How much time does this waste per week?</label>
-            <select id="time-wasted" name="time-wasted" required>
-              <option value="">Select an option</option>
-              <option value="1-2">1-2 hours</option>
-              <option value="3-5">3-5 hours</option>
-              <option value="6-10">6-10 hours</option>
-              <option value="11-20">11-20 hours</option>
-              <option value="20+">20+ hours</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label for="current-solution">What do you currently do to manage this?</label>
-            <textarea id="current-solution" name="current-solution" rows="3" placeholder="Describe your current workaround or solution..."></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="ideal-solution">What would your ideal solution look like?</label>
-            <textarea id="ideal-solution" name="ideal-solution" rows="3" placeholder="Describe what would make this problem disappear..."></textarea>
-          </div>
-
-          <div class="form-group checkbox-group">
-            <label>
-              <input type="checkbox" name="follow-up" value="yes">
-              I'm interested in testing early versions of tools built from this feedback
-            </label>
-          </div>
-
-          <button type="submit" class="submit-btn">Submit Feedback</button>
-        </form>
+      <!-- Responsive iframe container -->
+      <div class="iframe-wrap" role="region" aria-label="Embedded survey form">
+        <!-- Provided Google Forms embed (keeps the user's exact iframe src) -->
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSezSJb_pCNpRsxfDLpDo-AITuiVAGFL2GzVPTQA2dwjLE5m1Q/viewform?embedded=true"
+                title="Everyday Frustrations survey"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+          Loading…
+        </iframe>
       </div>
     </section>
 
